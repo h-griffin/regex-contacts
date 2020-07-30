@@ -1,4 +1,5 @@
-
+# find contacts
+reads through text from clipboard and returns all phone numbers and emails found on clipboard. then copies the found contacts to the clipboard
 
 ## tasks
 - get the text off the clip board
