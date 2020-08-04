@@ -25,25 +25,29 @@ def find_matches():
 
     matches =[]
 
+    # format numbers
     for groups in phone_regex.findall(text):
         phoneNum = '-'.join([groups[1],groups[3], groups[5]])
         if groups[8] != '':
             phoneNum += ' x' + groups[8]
         matches.append(phoneNum)
 
+    # add emails
     for groups in email_regex.findall(text):
         matches.append(groups[0])
     return matches
 
 def copy_matches(matches):
-    if len(matches) > 0:
-        pyperclip.copy('\n'.join(matches))
-        print('Copied to clipboard: ')
+    """if any matches found in fin_matches() then copy them to clipboard and diplay to user"""
+    if len(matches) > 0:                    # if any matches found
+        pyperclip.copy('\n'.join(matches))  # copy to clipboard
+        print('Copied to clipboard: ')      # display
         print('\n'.join(matches))
     else:
         print('No phone numbers or email addresses found')
 
 def find_contacts(text):
+    """uses two funtions to search for contacts all text on clipboard then copy only the contacts """
     matches = find_matches()
     copy_matches(matches)
 
